@@ -1,5 +1,14 @@
-function App() {
-  return <h2>Hello</h2>;
-}
+import React from "react";
+import Main from "./components/main/Main";
+
+import "./index.css";
+
+const App = () => {
+  return (
+    <>
+      <Main />
+    </>
+  );
+};
 
 export default App;
