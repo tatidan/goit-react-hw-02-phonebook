@@ -49,3 +49,35 @@ img {
   padding: 7px;
   border-radius: 6px;
 }
+@media screen and (min-width: 600px) {
+  .form {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .form {
+    font-size: 16px;
+  }
+  input {
+    width: 100px;
+  }
+  .phoneInput {
+    margin-left: 20px;
+  }
+}
+.contactsListItem {
+  padding: 10px;
+}
+.contactName {
+  margin-right: 20px;
+}
+.searchFormLabel {
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+  margin-left: 20px;
+  align-items: center;
+}
+.searchField {
+  padding: 7px;
+}
