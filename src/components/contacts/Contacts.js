@@ -3,7 +3,11 @@ import React from "react";
 const Contacts = () => {
   return (
     <div>
-      <h2>Contacts</h2>
+      <ul className="contactsList">
+        <li className="contactsListItem">Контакт 1</li>
+        <li className="contactsListItem">Контакт 2</li>
+        <li className="contactsListItem">Контакт 3</li>
+      </ul>
     </div>
   );
 };
