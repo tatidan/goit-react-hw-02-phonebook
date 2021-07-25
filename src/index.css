@@ -27,49 +27,52 @@ img {
 }
 .form {
   font-size: 18px;
-  width: 80vw;
+  width: 360px;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 10px 20px;
 }
 .nameInput {
-  margin-left: 75px;
+  margin-left: 100px;
   padding: 7px;
+  border-radius: 8px;
 }
 .phoneInput {
-  margin-left: 15px;
+  margin-left: 30px;
   padding: 7px;
+  border-radius: 8px;
 }
 .formLabel {
   margin-bottom: 20px;
+  font-weight: 700;
 }
 .submitBtn {
   width: 100px;
-  padding: 7px;
+  padding: 3px;
   border-radius: 6px;
 }
-@media screen and (min-width: 600px) {
-  .form {
-    width: 400px;
-  }
-}
-@media screen and (max-width: 400px) {
-  .form {
-    font-size: 16px;
-  }
-  input {
-    width: 100px;
-  }
-  .phoneInput {
-    margin-left: 20px;
-  }
+
+.contactsList {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 .contactsListItem {
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
 .contactName {
   margin-right: 20px;
+}
+.deleteBtn {
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-left: 20px;
 }
 .searchFormLabel {
   display: flex;
@@ -77,7 +80,14 @@ img {
   justify-content: space-between;
   margin-left: 20px;
   align-items: center;
+  margin-bottom: 20px;
 }
 .searchField {
   padding: 7px;
+  border-radius: 8px;
+}
+button:hover,
+button:focus {
+  background-color: rgb(87, 87, 94);
+  color: white;
 }

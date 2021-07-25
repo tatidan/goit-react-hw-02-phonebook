@@ -8,6 +8,7 @@ const SearchForm = ({ onSearchHandler, filter }) => {
         className="searchField"
         type="text"
         name="name"
+        placeholder="enter name"
         value={filter}
         onChange={onSearchHandler}
       />

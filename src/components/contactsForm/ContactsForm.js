@@ -1,30 +1,36 @@
 import React, { Component } from "react";
+import shortid from "shortid";
 
-class Form extends Component {
+class ContactsForm extends Component {
   state = {
     name: "",
-    phone: "",
+    number: "",
+    id: "",
   };
 
-  handleNameChange = (e) => {
-    this.setState({ name: e.currentTarget.value });
-  };
+  nameInputId = shortid.generate();
 
   handleChange = (e) => {
     const { name, value } = e.currentTarget;
+
     this.setState({
       [name]: value,
+      id: shortid.generate(),
     });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addNewContact(this.state);
+
+    this.props.onNameCheck(this.state.name).length >= 1
+      ? alert(`Contact with the name ${this.state.name} already exists.`)
+      : this.props.addNewContact(this.state);
+
     this.reset();
   };
 
   reset = () => {
-    this.setState({ name: "", phone: "" });
+    this.setState({ name: "", number: "" });
   };
 
   render() {
@@ -37,7 +43,9 @@ class Form extends Component {
             type="text"
             name="name"
             value={this.state.name}
+            id={this.nameInputId}
             onChange={this.handleChange}
+            placeholder="enter name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
@@ -49,8 +57,9 @@ class Form extends Component {
           <input
             className="phoneInput"
             type="text"
-            name="phone"
-            value={this.state.phone}
+            name="number"
+            placeholder="enter phone number"
+            value={this.state.number}
             onChange={this.handleChange}
           />
         </label>
@@ -63,4 +72,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default ContactsForm;

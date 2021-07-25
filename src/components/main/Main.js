@@ -1,26 +1,39 @@
 import React, { Component } from "react";
-import "../../index.css";
-import Contacts from "../contacts/Contacts";
-import Form from "../form/Form";
+import ContactsForm from "../contactsForm/ContactsForm";
+import ContactsList from "../contacts/ContactsList";
 import SearchForm from "../searchForm/SearchForm";
 import Section from "../section/Section";
-// import { v4 as uuidv4 } from "uuid";
-
-// uuidv4();
+import "../../index.css";
 
 class Main extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
+      { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
+      { id: "id-3", name: "Eden Clements", number: "645-17-79" },
+      { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
+    ],
     filter: "",
+  };
+
+  onNameCheck = (newName) => {
+    return this.state.contacts.filter(
+      (contact) => contact.name.toLowerCase() === newName.toLowerCase()
+    );
   };
 
   addNewContact = (contact) => {
     this.setState((prev) => ({ contacts: [...prev.contacts, contact] }));
   };
 
+  removeContact = (id) => {
+    this.setState((prevState) => ({
+      contacts: prevState.contacts.filter((contact) => contact.id !== id),
+    }));
+  };
+
   onSearchHandler = (e) => {
     this.setState({ filter: e.currentTarget.value });
-    // console.log(e.currentTarget.value);
   };
 
   onFilterRender = () => {
@@ -30,22 +43,25 @@ class Main extends Component {
   };
 
   render() {
-    // const filteredContacts = onFilterRender();
-    // console.log(filteredContacts);
+    const filteredContacts = this.onFilterRender();
 
     return (
       <>
         <Section title="Phonebook">
-          <Form addNewContact={this.addNewContact} />
+          <ContactsForm
+            onNameCheck={this.onNameCheck}
+            addNewContact={this.addNewContact}
+          />
         </Section>
         <Section title="Contacts">
           <SearchForm
             onSearchHandler={this.onSearchHandler}
             filter={this.state.filter}
           />
-          <Contacts
-            contacts={this.state.contacts}
+          <ContactsList
+            contacts={filteredContacts}
             onFilterRender={this.onFilterRender}
+            removeContact={this.removeContact}
           />
         </Section>
       </>
